@@ -6,7 +6,7 @@
       </h1>
     </div>
     <div id="menu" v-if="user.userId">
-      <router-link href="#" onClick="{toggleNavBar}">
+      <router-link to="#">
         <i class="fas fa-bars"></i>
       </router-link>
     </div>
@@ -18,7 +18,7 @@ export default {
   props: {
     user: {
       type: Object,
-      defaultValue: { userId: 8 }
+      default: () => ({ userId: 8 })
     }
   }
 }
