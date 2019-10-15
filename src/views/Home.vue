@@ -4,16 +4,25 @@
       <p>Have our delicious and nutritious meals delivered at your door step</p>
       <p>You can't get a better taste else where!</p>
     </div>
-    <SignupForm />
+    <SignupForm v-if="isSignup" />
+    <LoginForm else />
   </main>
 </template>
 
 <script>
 import SignupForm from '@/components/SignupForm'
+import LoginForm from '@/components/LoginForm'
 
 export default {
   components: {
-    SignupForm
+    SignupForm,
+    LoginForm
+  },
+
+  data () {
+    return {
+      isSignup: false
+    }
   }
 }
 </script>
