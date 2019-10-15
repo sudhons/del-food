@@ -4,21 +4,41 @@
       <p>Have our delicious and nutritious meals delivered at your door step</p>
       <p>You can't get a better taste else where!</p>
     </div>
+    <SignupForm />
   </main>
 </template>
+
+<script>
+import SignupForm from '@/components/SignupForm'
+
+export default {
+  components: {
+    SignupForm
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 @import "@/variables";
 
 main {
+  display: flex;
   background-color: rgba(0, 0, 0, 0.7) !important;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5rem;
+
+  @media screen and (max-width: 70rem) {
+    flex-direction: column;
+  }
 }
 
 #intro {
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-  padding-top: 5rem;
+  // padding-top: 5rem;
   height: 100%;
 }
 

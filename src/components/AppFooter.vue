@@ -8,8 +8,10 @@
 footer {
   background-color: #ccc;
   font-weight: bold;
-  padding: 1.6rem;
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   height: $footer-height;
-  text-align: right;
 }
 </style>
