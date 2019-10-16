@@ -54,4 +54,18 @@ ul {
     flex-grow: 1;
   }
 }
+
+.slide-fade-enter {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.8s ease-in-out;
+}
 </style>

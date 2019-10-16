@@ -2,14 +2,10 @@
   <header>
     <div id="brand">
       <h1 id="brand-name">
-        <router-link to="/">FooDDeL</router-link>
+        <router-link to="/">Fooddel</router-link>
       </h1>
     </div>
-    <div id="menu" v-if="user.userId">
-      <router-link to="#">
-        <i class="fas fa-bars"></i>
-      </router-link>
-    </div>
+    <font-awesome-icon class="menu" icon="bars" />
   </header>
 </template>
 
@@ -28,15 +24,21 @@ export default {
 @import "@/variables";
 
 header {
+  font-family: "Lobster", cursive;
   background-color: #dedede;
-  padding: 0.5rem 1.2rem;
+  padding: 0.5rem 4rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: $header-height;
 
   a {
     text-decoration: none;
-    color: rgb(8, 8, 126);
+    color: #af1c0b;
+  }
+
+  .menu {
+    font-size: 2rem;
   }
 }
 </style>

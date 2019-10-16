@@ -7,6 +7,7 @@
 
 footer {
   background-color: #ccc;
+  font-family: "Grenze", serif;
   font-weight: bold;
   padding-right: 2rem;
   display: flex;

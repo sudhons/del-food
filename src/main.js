@@ -4,7 +4,8 @@ import {
   faUserSecret,
   faUser,
   faAt,
-  faKey
+  faBars,
+  faLock
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -12,10 +13,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-library.add(faUserSecret)
-library.add(faUser)
-library.add(faAt)
-library.add(faKey)
+library.add(faUserSecret, faUser, faAt, faBars, faLock)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
