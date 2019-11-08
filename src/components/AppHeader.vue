@@ -26,7 +26,7 @@ export default {
 header {
   font-family: "Lobster", cursive;
   background-color: #dedede;
-  padding: 0.5rem 4rem;
+  padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
