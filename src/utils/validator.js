@@ -3,6 +3,8 @@ export const validateUserData = value =>
   typeof value.userId === 'number' &&
   ['admin', 'customer'].includes(value.userRole)
 
+export const isEmpty = value => value === undefined || value.length === 0
+
 export const isValidEmail = value => /^\w{2,}@\w{2,}\.\w{2,}$/.test(value)
 
 export const isValidPassword = value => /^[A-Za-z0-9]+$/.test(value)
@@ -15,8 +17,20 @@ export const isValidAddress = value =>
   /^[0-9]+ [A-Za-z 0-9]+$/.test(value.trim())
 
 export const validateLogin = user => {
+  if (isEmpty(user.email)) {
+    return {
+      isValid: false,
+      error: { msg: 'Email is required', prop: 'email' }
+    }
+  }
   if (!isValidEmail(user.email) || user.email.length > 40) {
     return { isValid: false, error: { msg: 'Invalid Email', prop: 'email' } }
+  }
+  if (isEmpty(user.password)) {
+    return {
+      isValid: false,
+      error: { msg: 'Password is required', prop: 'password' }
+    }
   }
   if (user.password.length < 6) {
     return {
@@ -40,29 +54,58 @@ export const validateLogin = user => {
 }
 
 export const validateSignup = user => {
+  if (isEmpty(user.firstName)) {
+    return {
+      isValid: false,
+      error: { msg: 'First name is required', prop: 'firstName' }
+    }
+  }
   if (!isLetters(user.firstName)) {
     return {
       isValid: false,
       error: { msg: 'Invalid first name', prop: 'firstName' }
     }
-  } else if (user.firstName.length > 40) {
+  }
+  if (user.firstName.length > 40) {
     return {
       isValid: false,
-      error: { msg: 'first name is too long', prop: 'firstName' }
+      error: { msg: 'First name is too long', prop: 'firstName' }
     }
-  } else if (!isLetters(user.lastName)) {
+  }
+  if (isEmpty(user.lastName)) {
+    return {
+      isValid: false,
+      error: { msg: 'Last name is required', prop: 'lastName' }
+    }
+  }
+  if (!isLetters(user.lastName)) {
     return {
       isValid: false,
       error: { msg: 'Invalid last name', prop: 'lastName' }
     }
-  } else if (user.lastName.length > 40) {
+  }
+  if (user.lastName.length > 40) {
     return {
       isValid: false,
-      error: { msg: 'last name is too long', prop: 'lastName' }
+      error: { msg: 'Last name is too long', prop: 'lastName' }
     }
-  } else if (!isValidEmail(user.email) || user.email.length > 40) {
+  }
+  if (isEmpty(user.email)) {
+    return {
+      isValid: false,
+      error: { msg: 'Email is required', prop: 'email' }
+    }
+  }
+  if (!isValidEmail(user.email) || user.email.length > 40) {
     return { isValid: false, error: { msg: 'Invalid Email', prop: 'email' } }
-  } else if (user.password.length < 6) {
+  }
+  if (isEmpty(user.password)) {
+    return {
+      isValid: false,
+      error: { msg: 'Password is required', prop: 'password' }
+    }
+  }
+  if (user.password.length < 6) {
     return {
       isValid: false,
       error: {
