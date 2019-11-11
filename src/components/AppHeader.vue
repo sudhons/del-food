@@ -5,18 +5,23 @@
         <router-link to="/">Fooddel</router-link>
       </h1>
     </div>
-    <font-awesome-icon class="menu" icon="bars" />
+    <font-awesome-icon class="menu" icon="bars" v-if="isLoggedIn" />
   </header>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
     user: {
       type: Object,
       default: () => ({ userId: 8 })
     }
-  }
+  },
+
+  computed: mapState({
+    isLoggedIn: state => state.auth.isLoggedIn
+  })
 }
 </script>
 
@@ -31,6 +36,11 @@ header {
   justify-content: space-between;
   align-items: center;
   height: $header-height;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
 
   a {
     text-decoration: none;
@@ -39,6 +49,7 @@ header {
 
   .menu {
     font-size: 2rem;
+    cursor: pointer;
   }
 }
 </style>
