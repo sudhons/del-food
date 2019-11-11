@@ -14,5 +14,6 @@ footer {
   align-items: center;
   justify-content: flex-end;
   height: $footer-height;
+  z-index: 1;
 }
 </style>
