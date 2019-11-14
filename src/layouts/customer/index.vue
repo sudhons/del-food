@@ -2,24 +2,21 @@
   <main>
     <nav id="menu-bar" :style="{width}">
       <ul>
-        <router-link
-          is="li"
+        <li
           @click="$router.push('/menu/meals')"
           :class="['menu-category', {active:'meals'===active}]"
           attr="Meals"
-        >Meals</router-link>
-        <router-link
-          is="li"
-          to="/menu/drinks"
+        >Meals</li>
+        <li
           @click="$router.push('/menu/drinks')"
           :class="['menu-category', {active:'drinks'===active}]"
           attr="Drinks"
-        >Drinks</router-link>
-        <router-link
-          is="li"
+        >Drinks</li>
+        <li
+          @click="$router.push('/menu/desserts')"
           :class="['menu-category', {active:'desserts'===active}]"
           attr="Desserts"
-        >Desserts</router-link>
+        >Desserts</li>
       </ul>
     </nav>
 
