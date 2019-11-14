@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import LandingRouter from './views/LandingPage/router/'
+import Customer from './layouts/customer/router/'
 import store from './store'
 
 Vue.use(Router)
@@ -8,7 +9,7 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [LandingRouter]
+  routes: [LandingRouter, Customer]
 })
 
 router.beforeEach((to, from, next) => {
