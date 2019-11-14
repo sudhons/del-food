@@ -19,6 +19,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/variables";
+
 * {
   margin: 0;
   padding: 0;
@@ -49,8 +51,8 @@ ul {
   flex-direction: column;
 
   main {
+    margin-top: $header-height;
     position: relative;
-    background-color: #e5e5e5;
     flex-grow: 1;
   }
 }

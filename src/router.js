@@ -1,17 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import LandingRouter from './views/LandingPage/router/'
+import store from './store'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    }
-  ]
+  routes: [LandingRouter]
 })
+
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = store.state.auth.isLoggedIn
+  if (to.meta.isAuth && !isLoggedIn) {
+    router.push('/')
+    return
+  }
+
+  if (to.meta.isAuth === false && isLoggedIn) {
+    return next('/menu')
+  }
+
+  next()
+})
+
+export default router
