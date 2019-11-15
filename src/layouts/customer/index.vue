@@ -21,7 +21,9 @@
     </nav>
 
     <div class="wrapper">
-      <router-view />
+      <transition name="fade" mode="out-in" appear>
+        <router-view />
+      </transition>
     </div>
     <font-awesome-icon
       class="fas"

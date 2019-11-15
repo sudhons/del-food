@@ -57,6 +57,21 @@ ul {
   }
 }
 
+.fade-leave-to {
+  transform: translateX(-70%);
+  opacity: 0;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translateX(90%);
+}
+
+.fade-leave-active,
+.fade-enter-active {
+  transition: all 0.4s cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
 .slide-fade-enter {
   transform: translateY(-100%);
   opacity: 0;
