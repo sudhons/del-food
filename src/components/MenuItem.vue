@@ -2,7 +2,7 @@
   <div class="items">
     <img :src="menuItem.image" alt="meal picture" />
     <h3>{{menuItem.title}}</h3>
-    <h3>Price: ₦{{menuItem.price}}</h3>
+    <h3>₦{{menuItem.price}}</h3>
     <button
       :class="['item-btn', {'disabled':menuItem.isInCart }]"
     >{{ menuItem.isInCart? "added to cart" : "add to cart" }}</button>
@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .items {
-  background-color: #efefef;
+  background-color: #f6f6f6;
   border-radius: 0.2rem;
   width: 100%;
   height: 20rem;
@@ -56,10 +56,10 @@ export default {
   color: #fff;
   font-size: 1rem;
   border: none;
-  border-radius: 0.2rem;
-  padding: 0.5rem 1.2rem;
-  margin: 0.5rem auto;
   cursor: pointer;
+  padding: 0.85rem 1.2rem;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 .disabled {

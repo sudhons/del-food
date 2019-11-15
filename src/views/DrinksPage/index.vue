@@ -3,7 +3,7 @@
     <font-awesome-icon class="fas" icon="spinner" spin size="8x" />
   </div>
   <div class="meal-category" v-else>
-    <MenuItem v-for="meal in meals" :key="meal.menu_id" :menuItem="meal" />
+    <MenuItem v-for="drink in drinks" :key="drink.menu_id" :menuItem="drink" />
   </div>
 </template>
 
@@ -20,9 +20,8 @@ export default {
   computed: {
     ...mapState({
       isLoading: state => state.isLoading,
-      menu: state => state.menu
     }),
-    ...mapGetters(['menuExist', 'meals'])
+    ...mapGetters(['menuExist', 'drinks'])
   },
   methods: {
     ...mapActions(['getMenu'])

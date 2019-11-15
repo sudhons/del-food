@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import auth from '@/views/LandingPage/store'
 import meal from '@/views/MealsPage/store'
+import drink from '@/views/DrinksPage/store'
 const baseURL = 'https://food-fast.herokuapp.com/api/v1'
 
 Vue.use(Vuex)
@@ -21,6 +22,11 @@ export default new Vuex.Store({
       state.isLoading = !state.isLoading
     }
   },
+  getters: {
+    menuExist (state) {
+      return state.menu.length > 0
+    }
+  },
   actions: {
     async getMenu ({ commit }) {
       commit('TOGGLE_ISLOADING')
@@ -30,5 +36,5 @@ export default new Vuex.Store({
       } catch (error) {}
     }
   },
-  modules: { auth, meal }
+  modules: { auth, meal, drink }
 })
