@@ -3,7 +3,7 @@
     <font-awesome-icon class="fas" icon="spinner" spin size="8x" />
   </div>
   <div class="meal-category" v-else>
-    <MenuItem v-for="dessert in desserts" :key="dessert.menu_id" :menuItem="dessert" />
+    <menu-item v-for="dessert in desserts" :key="dessert.menu_id" :menuItem="dessert" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ import MenuItem from '@/components/MenuItem'
 import { mapState, mapActions, mapGetters } from 'vuex'
 export default {
   components: {
-    MenuItem
+    'menu-item': MenuItem
   },
   mounted () {
     if (!this.menuExist) this.getMenu()

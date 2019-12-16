@@ -5,6 +5,7 @@ import auth from '@/views/LandingPage/store'
 import meal from '@/views/MealsPage/store'
 import drink from '@/views/DrinksPage/store'
 import dessert from '@/views/DessertsPage/store'
+import cart from '@/views/CartPage/store'
 const baseURL = 'https://food-fast.herokuapp.com/api/v1'
 
 Vue.use(Vuex)
@@ -37,5 +38,5 @@ export default new Vuex.Store({
       } catch (error) {}
     }
   },
-  modules: { auth, meal, drink, dessert }
+  modules: { auth, meal, drink, dessert, cart }
 })

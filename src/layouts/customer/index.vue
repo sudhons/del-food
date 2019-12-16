@@ -17,6 +17,16 @@
           :class="['menu-category', {active:'desserts'===active}]"
           attr="Desserts"
         >Desserts</li>
+        <li
+          @click="$router.push('/menu/shoppingcart')"
+          :class="['menu-category', {active:'shoppingcart'===active}]"
+          attr="Cart"
+        >Cart</li>
+        <li
+          @click="$router.push('/menu/orders')"
+          :class="['menu-category', {active:'orders'===active}]"
+          attr="Orders"
+        >Orders</li>
       </ul>
     </nav>
 

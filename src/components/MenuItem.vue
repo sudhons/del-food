@@ -1,8 +1,10 @@
 <template>
   <div class="items">
     <img :src="menuItem.image" alt="meal picture" />
-    <h3>{{menuItem.title}}</h3>
-    <h3>₦{{menuItem.price}}</h3>
+    <div class="item-details">
+      <h3>{{menuItem.title}}</h3>
+      <h3>₦{{menuItem.price}}</h3>
+    </div>
     <button
       :class="['item-btn', {'disabled':menuItem.isInCart }]"
     >{{ menuItem.isInCart? "added to cart" : "add to cart" }}</button>
@@ -30,12 +32,24 @@ export default {
   background-color: #f6f6f6;
   border-radius: 0.2rem;
   width: 100%;
-  height: 20rem;
+  height: 22.5rem;
   color: #4e4e4e;
   box-shadow: 0 0 4px 1px #cbcbcc;
   text-align: center;
   margin: auto;
   overflow: hidden;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.8rem 0;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: normal;
 }
 
 .items:hover {
@@ -58,7 +72,7 @@ export default {
   border: none;
   cursor: pointer;
   padding: 0.85rem 1.2rem;
-  margin-top: 1rem;
+  // margin-top: 2rem;
   width: 100%;
 }
 

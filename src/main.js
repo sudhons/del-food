@@ -7,7 +7,8 @@ import {
   faBars,
   faLock,
   faSpinner,
-  faCaretSquareDown
+  faCaretSquareDown,
+  faTrash
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -22,7 +23,8 @@ library.add(
   faBars,
   faLock,
   faSpinner,
-  faCaretSquareDown
+  faCaretSquareDown,
+  faTrash
 )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
