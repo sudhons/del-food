@@ -13,6 +13,36 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     menu: [],
+    cartItems: [
+      {
+        mealId: 1,
+        quantity: 5
+      },
+      {
+        mealId: 2,
+        quantity: 5
+      },
+      {
+        mealId: 4,
+        quantity: 5
+      },
+      {
+        mealId: 8,
+        quantity: 5
+      },
+      {
+        mealId: 10,
+        quantity: 5
+      },
+      {
+        mealId: 11,
+        quantity: 5
+      },
+      {
+        mealId: 12,
+        quantity: 5
+      }
+    ],
     isLoading: false
   },
   mutations: {
@@ -22,6 +52,17 @@ export default new Vuex.Store({
     },
     TOGGLE_ISLOADING (state, payload) {
       state.isLoading = payload || !state.isLoading
+    },
+    UPDATE_CART_ITEM (state, { id, quantity }) {
+      state.cartItems = state.cartItems.map(cartItem =>
+        cartItem.mealId === id ? { ...cartItem, quantity } : cartItem
+      )
+    },
+    REMOVE_CART_ITEM (state, id) {
+      state.cartItems = state.cartItems.filter(cartItem => cartItem.mealId !== id)
+    },
+    ADD_CART_ITEM (state, id) {
+      state.cartItems.push({ mealId: id, quantity: 1 })
     }
   },
   getters: {
@@ -35,7 +76,7 @@ export default new Vuex.Store({
       try {
         const response = await axios.get(`${baseURL}/menu`)
         commit('SET_MENU', response.data.data)
-      } catch (error) {}
+      } catch (error) { }
     }
   },
   modules: { auth, meal, drink, dessert, cart }

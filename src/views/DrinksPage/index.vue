@@ -3,13 +3,13 @@
     <font-awesome-icon class="fas" icon="spinner" spin size="8x" />
   </div>
   <div class="meal-category" v-else>
-    <menu-item v-for="drink in drinks" :key="drink.menu_id" :menuItem="drink" />
+    <menu-item v-for="drink in drinks" :key="drink.menu_id" :menuItem="drink" @add-to-cart="addToCart"/>
   </div>
 </template>
 
 <script>
 import MenuItem from '@/components/MenuItem'
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapState, mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   components: {
     'menu-item': MenuItem
@@ -19,12 +19,15 @@ export default {
   },
   computed: {
     ...mapState({
-      isLoading: state => state.isLoading,
+      isLoading: state => state.isLoading
     }),
     ...mapGetters(['menuExist', 'drinks'])
   },
   methods: {
-    ...mapActions(['getMenu'])
+    ...mapActions(['getMenu']),
+    ...mapMutations({
+      addToCart: 'ADD_CART_ITEM'
+    })
   }
 }
 </script>

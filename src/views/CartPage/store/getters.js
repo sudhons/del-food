@@ -1,6 +1,6 @@
 export default {
   cartItems (state, getters, rootState) {
-    return state.cart.map(item => {
+    return rootState.cartItems.map(item => {
       const cartItem = rootState.menu.find(
         menuItem => menuItem.menu_id === item.mealId
       )

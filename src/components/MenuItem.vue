@@ -7,6 +7,7 @@
     </div>
     <button
       :class="['item-btn', {'disabled':menuItem.isInCart }]"
+      @click="$emit('add-to-cart', menuItem.menu_id)"
     >{{ menuItem.isInCart? "added to cart" : "add to cart" }}</button>
   </div>
 </template>

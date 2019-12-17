@@ -30,7 +30,7 @@ export default {
 
     ...mapGetters(['menuExist', 'cartItems'])
   },
-    methods: {
+  methods: {
     ...mapActions(['getMenu']),
     ...mapMutations({
       updateCartItem: 'UPDATE_CART_ITEM',
