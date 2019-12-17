@@ -20,8 +20,8 @@ export default new Vuex.Store({
       state.menu = menu
       state.isLoading = false
     },
-    TOGGLE_ISLOADING (state) {
-      state.isLoading = !state.isLoading
+    TOGGLE_ISLOADING (state, payload) {
+      state.isLoading = payload || !state.isLoading
     }
   },
   getters: {
@@ -31,7 +31,7 @@ export default new Vuex.Store({
   },
   actions: {
     async getMenu ({ commit }) {
-      commit('TOGGLE_ISLOADING')
+      commit('TOGGLE_ISLOADING', true)
       try {
         const response = await axios.get(`${baseURL}/menu`)
         commit('SET_MENU', response.data.data)

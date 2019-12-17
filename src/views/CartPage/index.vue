@@ -1,24 +1,40 @@
 <template>
-  <!-- <div class="spinner" v-if="isLoading">
+  <div class="spinner" v-if="isLoading">
     <font-awesome-icon class="fas" icon="spinner" spin size="8x" />
-  </div>-->
-  <!-- <div class="meal-category" v-else> -->
-  <div class="meal-category">
-    <cart-item v-for="item in cartItems" :key="item.menu_id" :cartItem="item" />
+  </div>
+  <div class="meal-category" v-else>
+    <cart-item
+      v-for="item in cartItems"
+      :key="item.menu_id"
+      :cartItem="item"
+      @update-cart-item="updateCartItem"
+      @delete-cart-item="removeCartItem"
+    />
   </div>
 </template>
 
 <script>
 import CartItem from '@/components/CartItem'
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 export default {
   components: {
     'cart-item': CartItem
   },
+  mounted () {
+    if (!this.menuExist) this.getMenu()
+  },
   computed: {
     ...mapState({
-      isLoading: state => state.isLoading,
-      cartItems: state => state.cart.cartItems
+      isLoading: state => state.isLoading
+    }),
+
+    ...mapGetters(['menuExist', 'cartItems'])
+  },
+    methods: {
+    ...mapActions(['getMenu']),
+    ...mapMutations({
+      updateCartItem: 'UPDATE_CART_ITEM',
+      removeCartItem: 'REMOVE_CART_ITEM'
     })
   }
 }
@@ -28,7 +44,7 @@ export default {
 .meal-category {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  grid-gap: 1rem !important;
+  grid-gap: 1rem;
 
   @media only screen and (max-width: 730px) {
     margin: 0 7%;

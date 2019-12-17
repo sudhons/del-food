@@ -2,12 +2,19 @@
   <div class="cart-items">
     <div>
       <img :src="cartItem.image" alt="food item picture" />
-      <font-awesome-icon class="fas delete delete-cart-item" icon="trash" />
+      <font-awesome-icon class="fas delete delete-cart-item" icon="trash" @click="handleDelete" />
     </div>
     <div>
       <div class="my-cart-props">
         <label>Quantity:</label>
-        <input class="qty" type="number" min="1" step="1" />
+        <input
+          class="qty"
+          type="number"
+          min="1"
+          step="1"
+          :value="cartItem.quantity"
+          @input="handleInput"
+        />
       </div>
       <div class="my-cart-props">
         <div>Unit Price:</div>
@@ -15,7 +22,7 @@
       </div>
       <div class="my-cart-props">
         <div>Total:</div>
-        <div class="price">₦{{cartItem.price * cartItem.quantity || 1}}</div>
+        <div class="price">₦{{cartItem.price * cartItem.quantity}}</div>
       </div>
     </div>
   </div>
@@ -23,7 +30,15 @@
 
 <script>
 export default {
-  props: ['cartItem']
+  props: ['cartItem'],
+  methods: {
+    handleInput ({ target }) {
+      this.$emit('update-cart-item', { id: this.cartItem.menu_id, quantity: target.value })
+    },
+    handleDelete () {
+      this.$emit('delete-cart-item', this.cartItem.menu_id)
+    }
+  }
 }
 </script>
 
@@ -47,6 +62,10 @@ export default {
   border-radius: 0.16rem 0.16rem 0 0;
 }
 
+.cart-items :nth-child(2) {
+  margin-top: 1rem;
+}
+
 .cart-props,
 .my-cart-props {
   min-height: 2rem;
@@ -54,7 +73,8 @@ export default {
   margin-right: 0;
 }
 
-.my-cart-props > div {
+.my-cart-props > div,
+label {
   display: inline;
   font-weight: 500;
 }
