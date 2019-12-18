@@ -3,7 +3,7 @@
     <font-awesome-icon class="fas" icon="spinner" spin size="8x" />
   </div>
   <div class="meal-category" v-else>
-    <menu-item v-for="meal in meals" :key="meal.menu_id" :menuItem="meal" @add-to-cart="addToCart"/>
+    <menu-item v-for="meal in meals" :key="meal.menu_id" :menuItem="meal" @add-to-cart="addToCart" />
   </div>
 </template>
 

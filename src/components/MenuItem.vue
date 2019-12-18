@@ -1,5 +1,5 @@
 <template>
-  <div class="items">
+  <div :class="['items', {'in-cart':menuItem.isInCart}]">
     <img :src="menuItem.image" alt="meal picture" />
     <div class="item-details">
       <h3>{{menuItem.title}}</h3>
@@ -53,7 +53,7 @@ h3 {
   font-weight: normal;
 }
 
-.items:hover {
+.items:not(.in-cart):hover {
   box-shadow: 0 0 0.5rem #000;
 }
 
@@ -71,6 +71,7 @@ h3 {
   color: #fff;
   font-size: 1rem;
   border: none;
+  outline: none;
   cursor: pointer;
   padding: 0.85rem 1.2rem;
   // margin-top: 2rem;

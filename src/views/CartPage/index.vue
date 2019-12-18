@@ -2,7 +2,7 @@
   <div class="spinner" v-if="isLoading">
     <font-awesome-icon class="fas" icon="spinner" spin size="8x" />
   </div>
-  <div class="meal-category" v-else>
+  <transition-group name="fade" class="meal-category" v-else>
     <cart-item
       v-for="item in cartItems"
       :key="item.menu_id"
@@ -10,7 +10,7 @@
       @update-cart-item="updateCartItem"
       @delete-cart-item="removeCartItem"
     />
-  </div>
+  </transition-group>
 </template>
 
 <script>
