@@ -2,23 +2,28 @@
   <div class="spinner" v-if="isLoading">
     <font-awesome-icon class="fas" icon="spinner" spin size="8x" />
   </div>
-  <transition-group name="fade" class="meal-category" v-else>
-    <cart-item
-      v-for="item in cartItems"
-      :key="item.menu_id"
-      :cartItem="item"
-      @update-cart-item="updateCartItem"
-      @delete-cart-item="removeCartItem"
-    />
-  </transition-group>
+  <div v-else-if="cartItems.length">
+    <transition-group name="fade" class="meal-category">
+      <cart-item
+        v-for="item in cartItems"
+        :key="item.menu_id"
+        :cartItem="item"
+        @update-cart-item="updateCartItem"
+        @delete-cart-item="removeCartItem"
+      />
+    </transition-group>
+    <delivery-form />
+  </div>
 </template>
 
 <script>
 import CartItem from '@/components/CartItem'
+import DeliveryForm from './DeliveryForm'
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 export default {
   components: {
-    'cart-item': CartItem
+    'cart-item': CartItem,
+    'delivery-form': DeliveryForm
   },
   mounted () {
     if (!this.menuExist) this.getMenu()

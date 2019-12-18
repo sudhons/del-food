@@ -65,7 +65,7 @@ export default {
 
   computed: {
     width () {
-      return this.showSideBar || this.size >= 720 ? '15rem' : '0'
+      return this.showSideBar || this.size >= 720 ? '13.5rem' : '0'
     },
 
     active () {
@@ -84,7 +84,7 @@ main {
   display: flex;
 
   .wrapper {
-    margin-left: 15rem;
+    margin-left: 13.5rem;
     padding: 1.5rem 1rem;
     width: 100%;
     @media only screen and (max-width: 730px) {
@@ -94,11 +94,10 @@ main {
 
   nav {
     background: #811004;
-    width: 15rem;
     height: 100vh;
     flex-shrink: 0;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     padding-top: 3rem;
     text-align: left;
     position: fixed;
@@ -108,7 +107,7 @@ main {
 
     li {
       margin: 0.5rem 0 1rem 2rem;
-      padding-left: 2.5rem;
+      padding-left: 1.5rem;
       position: relative;
       line-height: 1.7;
       overflow: hidden;
@@ -130,7 +129,7 @@ main {
     }
 
     li.active::after {
-      padding-left: 2.5rem;
+      padding-left: 1.5rem;
       left: 0;
       transition: left 1s ease-in-out;
     }

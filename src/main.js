@@ -8,7 +8,9 @@ import {
   faLock,
   faSpinner,
   faCaretSquareDown,
-  faTrash
+  faTrash,
+  faAddressCard,
+  faPhone
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -24,7 +26,9 @@ library.add(
   faLock,
   faSpinner,
   faCaretSquareDown,
-  faTrash
+  faTrash,
+  faAddressCard,
+  faPhone
 )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
