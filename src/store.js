@@ -9,40 +9,11 @@ import cart from '@/views/CartPage/store'
 const baseURL = 'https://food-fast.herokuapp.com/api/v1'
 
 Vue.use(Vuex)
-
-export default new Vuex.Store({
+const persistedCartItems = localStorage.getItem('cartItems')
+const store = new Vuex.Store({
   state: {
     menu: [],
-    cartItems: [
-      {
-        mealId: 1,
-        quantity: 5
-      },
-      {
-        mealId: 2,
-        quantity: 5
-      },
-      {
-        mealId: 4,
-        quantity: 5
-      },
-      {
-        mealId: 8,
-        quantity: 5
-      },
-      {
-        mealId: 10,
-        quantity: 5
-      },
-      {
-        mealId: 11,
-        quantity: 5
-      },
-      {
-        mealId: 12,
-        quantity: 5
-      }
-    ],
+    cartItems: persistedCartItems ? JSON.parse(persistedCartItems) : [],
     isLoading: false
   },
   mutations: {
@@ -81,3 +52,7 @@ export default new Vuex.Store({
   },
   modules: { auth, meal, drink, dessert, cart }
 })
+
+store.watch(({ cartItems }) => cartItems, cartItems => localStorage.setItem('cartItems', JSON.stringify(cartItems)))
+
+export default store
