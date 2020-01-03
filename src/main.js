@@ -10,7 +10,8 @@ import {
   faCaretSquareDown,
   faTrash,
   faAddressCard,
-  faPhone
+  faPhone,
+  faAngleRight
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -28,7 +29,8 @@ library.add(
   faCaretSquareDown,
   faTrash,
   faAddressCard,
-  faPhone
+  faPhone,
+  faAngleRight
 )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

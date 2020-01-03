@@ -89,6 +89,7 @@ main {
     width: 100%;
     @media only screen and (max-width: 730px) {
       margin-left: 0;
+      padding: 1.5rem 0.5rem;
     }
   }
 
