@@ -6,6 +6,7 @@ import meal from '@/views/MealsPage/store'
 import drink from '@/views/DrinksPage/store'
 import dessert from '@/views/DessertsPage/store'
 import cart from '@/views/CartPage/store'
+import orders from '@/views/OrdersPage/store'
 const baseURL = 'https://food-fast.herokuapp.com/api/v1'
 
 Vue.use(Vuex)
@@ -50,7 +51,7 @@ const store = new Vuex.Store({
       } catch (error) { }
     }
   },
-  modules: { auth, meal, drink, dessert, cart }
+  modules: { auth, meal, drink, dessert, cart, orders }
 })
 
 store.watch(({ cartItems }) => cartItems, cartItems => localStorage.setItem('cartItems', JSON.stringify(cartItems)))

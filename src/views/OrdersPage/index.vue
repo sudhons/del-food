@@ -1,5 +1,8 @@
 <template>
-  <div class="section-orders">
+  <div class="spinner" v-if="isLoading">
+    <font-awesome-icon class="fas-spinner" icon="spinner" spin size="8x" />
+  </div>
+  <div class="section-orders" v-else>
     <div class="head">
       <div>Order</div>
       <div>Time</div>
@@ -33,6 +36,7 @@
 <script>
 import OrderDeliveryInfo from './OrderDeliveryInfo'
 import OrderItemsInfo from './OrderItemsInfo'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
@@ -40,153 +44,22 @@ export default {
     'order-items-info': OrderItemsInfo
   },
 
+  mounted () {
+    this.getOrders()
+  },
+
   data () {
     return {
-      active: 0,
-      orderList: [
-        { order_id: 1,
-          order_status: 'new',
-          ordered_time: Date.now(),
-          customer: 'Sunday sundy',
-          recipient_name: 'Oluwaseun',
-          recipient_address: 'Oluwasogo str',
-          recipient_phone: '37173781388',
-          total_amount: 13000,
-          items: [
-            {
-              title: 'some item',
-              unit_price: 2000,
-              quantity: 5,
-              total: 10000
-            },
-            {
-              title: 'another item',
-              unit_price: 1000,
-              quantity: 2,
-              total: 2000
-            },
-            {
-              title: 'fresh item',
-              unit_price: 2000,
-              quantity: 3,
-              total: 6000
-            },
-            {
-              title: 'all of the items',
-              unit_price: 1200,
-              quantity: 3,
-              total: 3600
-            }
-          ]
-        },
-        { order_id: 2,
-          order_status: 'processing',
-          ordered_time: Date.now(),
-          customer: 'Sunday sundy',
-          recipient_name: 'Oluwaseun',
-          recipient_address: 'Oluwasogo str',
-          recipient_phone: '37173781388',
-          total_amount: 13000,
-          items: [
-            {
-              title: 'some item',
-              unit_price: 2000,
-              quantity: 5,
-              total: 10000
-            },
-            {
-              title: 'another item',
-              unit_price: 1000,
-              quantity: 2,
-              total: 2000
-            },
-            {
-              title: 'fresh item',
-              unit_price: 2000,
-              quantity: 3,
-              total: 6000
-            },
-            {
-              title: 'all of the items',
-              unit_price: 1200,
-              quantity: 3,
-              total: 3600
-            }
-          ]
-        },
-        { order_id: 3,
-          order_status: 'cancelled',
-          ordered_time: Date.now(),
-          customer: 'Sunday sundy',
-          recipient_name: 'Oluwaseun',
-          recipient_address: 'Oluwasogo str',
-          recipient_phone: '37173781388',
-          total_amount: 13000,
-          items: [
-            {
-              title: 'some item',
-              unit_price: 2000,
-              quantity: 5,
-              total: 10000
-            },
-            {
-              title: 'another item',
-              unit_price: 1000,
-              quantity: 2,
-              total: 2000
-            },
-            {
-              title: 'fresh item',
-              unit_price: 2000,
-              quantity: 3,
-              total: 6000
-            },
-            {
-              title: 'all of the items',
-              unit_price: 1200,
-              quantity: 3,
-              total: 3600
-            }
-          ]
-        },
-        { order_id: 4,
-          order_status: 'completed',
-          ordered_time: Date.now(),
-          customer: 'Sunday sundy',
-          recipient_name: 'Oluwaseun',
-          recipient_address: 'Oluwasogo str',
-          recipient_phone: '37173781388',
-          total_amount: 13000,
-          items: [
-            {
-              title: 'some item',
-              unit_price: 2000,
-              quantity: 5,
-              total: 10000
-            },
-            {
-              title: 'another item',
-              unit_price: 1000,
-              quantity: 2,
-              total: 2000
-            },
-            {
-              title: 'fresh item',
-              unit_price: 2000,
-              quantity: 3,
-              total: 6000
-            },
-            {
-              title: 'all of the items',
-              unit_price: 1200,
-              quantity: 3,
-              total: 3600
-            }
-          ]
-        }
-      ]
+      active: 0
     }
-  }
+  },
+
+  computed: mapState({
+    isLoading: state => state.isLoading,
+    orderList: state => state.orders.orders
+  }),
+
+  methods: mapActions(['getOrders'])
 }
 </script>
 
@@ -334,13 +207,16 @@ export default {
     padding: .6rem;
   }
 
-  /*  */
-  .order-table a {
-    display: block;
-    padding: .4rem;
-    text-decoration: none;
-    color: #000;
+  .spinner {
+    margin-top: 30vh;
   }
+  /*  */
+  // .order-table a {
+  //   display: block;
+  //   padding: .4rem;
+  //   text-decoration: none;
+  //   color: #000;
+  // }
 
     /* .complete > a {
     background-color: green;
